@@ -7,11 +7,11 @@ description: "Use this skill when the user wants to generate, create, or produce
 
 ## Overview
 
-Generates images via an OpenAI-compatible API (base64 response) and displays them inline in Claude Code.
+Generates images via an OpenAI-compatible API (base64 response) and displays them inline in Codex.
 
 ## Configuration
 
-The user must have a config file at `~/.claude/skills/image-gen/config.json`:
+The user must have a config file at `~/.codex/skills/image-gen/config.json`:
 
 ```json
 {
@@ -19,7 +19,7 @@ The user must have a config file at `~/.claude/skills/image-gen/config.json`:
   "apiKey": "your-api-key-here",
   "defaultModel": "gpt-image-1.5",
   "defaultSize": "1024x1024",
-  "outputDir": "~/Pictures/claude-generated"
+  "outputDir": "~/Pictures/codex-generated"
 }
 ```
 
@@ -30,7 +30,7 @@ If config.json does not exist, guide the user to create it before proceeding.
 ### Step 1: Read Configuration
 
 ```powershell
-$config = Get-Content "$env:USERPROFILE\.claude\skills\image-gen\config.json" | ConvertFrom-Json
+$config = Get-Content "$env:USERPROFILE\.codex\skills\image-gen\config.json" | ConvertFrom-Json
 ```
 
 If the file doesn't exist, stop and ask the user to configure it first.
@@ -90,10 +90,10 @@ $outputPath = Join-Path $outputDir "image_$timestamp.png"
 
 ### Step 5: Display the Image
 
-Use the Read tool to display the saved PNG file inline:
+Display the saved PNG file inline with a Markdown image tag that uses the absolute file path:
 
-```
-Read(file_path=$outputPath)
+```markdown
+![Generated image](C:\absolute\path\to\image.png)
 ```
 
 Then tell the user:
@@ -112,7 +112,7 @@ Then tell the user:
 
 ## Error Handling
 
-- **No config file**: Guide user to create `~/.claude/skills/image-gen/config.json`
+- **No config file**: Guide user to create `~/.codex/skills/image-gen/config.json`
 - **API error (401)**: API key is invalid, ask user to check their key
 - **API error (429)**: Rate limited, wait and retry or inform user
 - **API error (400)**: Prompt may be rejected (content policy), inform user and suggest modification

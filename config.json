@@ -3,5 +3,5 @@
   "apiKey": "你的key",
   "defaultModel": "gpt-image-1.5",
   "defaultSize": "1024x1024",
-  "outputDir": "~/Pictures/claude-generated"
+  "outputDir": "~/Pictures/codex-generated"
 }

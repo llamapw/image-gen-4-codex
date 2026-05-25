@@ -1,14 +1,14 @@
-# Image Generation Skill for Claude Code
+# Image Generation Skill for Codex
 
-在 Claude Code 中直接生成 AI 图像，支持上下文感知的提示词优化。
+在 Codex 中直接生成 AI 图像，支持上下文感知的提示词优化。
 
 ## 安装
 
-此 skill 已安装在 `~/.claude/skills/image-gen/` 目录下。
+此 skill 已安装在 `~/.codex/skills/image-gen/` 目录下。
 
 ## 配置
 
-编辑 `~/.claude/skills/image-gen/config.json`：
+编辑 `~/.codex/skills/image-gen/config.json`：
 
 ```json
 {
@@ -16,7 +16,7 @@
   "apiKey": "your-api-key",
   "defaultModel": "gpt-image-1.5",
   "defaultSize": "1024x1024",
-  "outputDir": "~/Pictures/claude-generated"
+  "outputDir": "~/Pictures/codex-generated"
 }
 ```
 
@@ -38,7 +38,7 @@
 
 ## 使用方式
 
-在 Claude Code 对话中直接说：
+在 Codex 对话中直接说：
 
 - "生成一张图片：一只猫在阳光下"
 - "帮我画一个网站的 hero 背景图"
@@ -54,7 +54,7 @@ Skill 会自动：
 1. **提示词优化**：不是简单传递用户输入，而是结合对话上下文（当前项目、讨论的主题、设计需求等）智能扩展提示词
 2. **API 调用**：通过 PowerShell 发送 POST 请求到配置的中转站端点
 3. **Base64 解码**：API 返回 base64 编码的图像数据，skill 解码后保存为 PNG 文件
-4. **内联展示**：使用 Claude Code 的 Read 工具直接在终端展示图像
+4. **内联展示**：使用 Markdown 图片标签在 Codex 中展示图像
 
 ## 故障排除
 
